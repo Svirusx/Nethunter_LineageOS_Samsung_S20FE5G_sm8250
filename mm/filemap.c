@@ -2946,8 +2946,7 @@ static struct page *wait_on_page_read(struct page *page)
 }
 
 static struct page *do_read_cache_page(struct address_space *mapping,
-				pgoff_t index,
-				int (*filler)(void *, struct page *),
+				pgoff_t index, filler_t filler,
 				void *data,
 				gfp_t gfp)
 {
@@ -3066,7 +3065,7 @@ out:
  */
 struct page *read_cache_page(struct address_space *mapping,
 				pgoff_t index,
-				int (*filler)(void *, struct page *),
+				filler_t filler,
 				void *data)
 {
 	return do_read_cache_page(mapping, index, filler, data, mapping_gfp_mask(mapping));
