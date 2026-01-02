@@ -106,7 +106,9 @@ int __init summary_init_coreinfo(struct sec_debug_summary_data_apss *secdbg_apss
 
 #ifdef CONFIG_SEC_DEBUG_MODULE_INFO
 #ifdef CONFIG_MODULES_TREE_LOOKUP
+#ifdef CONFIG_SEC_DEBUG_COREINFO
 	sec_debug_coreinfo_module();
+#endif
 	SUMMARY_COREINFO_OFFSET(latch_tree_root, seq);
 	SUMMARY_COREINFO_OFFSET(latch_tree_root, tree);
 	SUMMARY_COREINFO_OFFSET(seqcount, sequence);
