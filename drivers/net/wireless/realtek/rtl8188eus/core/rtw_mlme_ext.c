@@ -258,11 +258,8 @@ void rtw_txpwr_init_regdx(struct rf_ctl_t *rfctl)
 		);
 		if (rfctl->regd_name)
 			break;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
-	__attribute__ ((fallthrough));
-#else
-			__attribute__ ((__fallthrough__));
-#endif
+fallthrough;
+
 	default:
 		rfctl->regd_name = regd_strx(TXPWR_LMT_WW);
 		RTW_PRINT("assign %s for default case\n", regd_strx(TXPWR_LMT_WW));
@@ -1351,11 +1348,8 @@ void mgt_dispatcherx(_adapter *padapter, union recv_frame *precv_frame)
 			ptable->func = &OnAuthx;
 		else
 			ptable->func = &OnAuthxClient;
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0)
-	__attribute__ ((fallthrough));
-#else
-			__attribute__ ((__fallthrough__));
-#endif
+fallthrough;
+
 	case WIFI_ASSOCREQ:
 	case WIFI_REASSOCREQ:
 		_mgt_dispatcherx(padapter, ptable, precv_frame);
